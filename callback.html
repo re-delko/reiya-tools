@@ -1,0 +1,15 @@
+<!doctype html>
+<html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>TikTok 連携の戻り先</title>
+<style>body{font-family:sans-serif;max-width:640px;margin:40px auto;padding:0 16px;line-height:1.7}code{display:block;word-break:break-all;background:#f3f3f3;padding:12px;border-radius:6px}</style>
+</head><body>
+<h1>TikTok の許可が終わりました</h1>
+<p id="msg">下のコードをコピーして、手元の端末で <b>py -3 scripts/tiktok_fetch.py exchange &lt;コード&gt;</b> を実行してください。</p>
+<code id="code">（コードがありません）</code>
+<p><button onclick="navigator.clipboard.writeText(document.getElementById('code').textContent)">コピー</button></p>
+<script>
+const p = new URLSearchParams(location.search);
+if (p.get("code")) document.getElementById("code").textContent = p.get("code");
+if (p.get("error")) document.getElementById("msg").textContent = "許可できませんでした: " + p.get("error") + " " + (p.get("error_description") || "");
+</script>
+</body></html>
